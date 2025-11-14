@@ -1,18 +1,422 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flames App</title>
-    <link rel="icon" type="image/x-icon" href="favicon.svg">
+    <title>Lex & Partners — Law Firm</title>
+    <meta name="description" content="Firma hukum korporasi & litigasi dengan layanan modern dan terintegrasi. Nuansa hitam & gold dengan efek glassmorphism." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-sans/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/geist@1.0.0/dist/fonts/geist-mono/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN (for this static version) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Manrope', 'system-ui', 'sans-serif'] },
+            colors: { gold: '#D4AF37' },
+            boxShadow: {
+              glass: '0 1px 0 0 rgba(255,255,255,0.08) inset, 0 20px 40px -20px rgba(0,0,0,0.5)'
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Spline Viewer (web component) -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.49/build/spline-viewer.js"></script>
+
+    <style>
+      body { background: #000; }
+      .glass { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(10px); }
+      .glass-strong { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); backdrop-filter: blur(14px); }
+      .gold-gradient { background: linear-gradient(135deg, #d4af37, #f0d27a); }
+      .fade-in { animation: fade 0.8s ease both; }
+      @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    </style>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body class="font-sans text-white antialiased">
+    <!-- Navbar -->
+    <header class="fixed top-0 inset-x-0 z-50 backdrop-blur bg-black/60 border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#home" class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center">
+            <i data-lucide="gavel" class="text-gold"></i>
+          </div>
+          <div>
+            <p class="text-lg font-semibold tracking-wide text-gold">Lex & Partners</p>
+            <p class="text-[11px] -mt-1 text-white/60">Attorneys at Law</p>
+          </div>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm">
+          <a href="#about" class="text-white/80 hover:text-white transition">Tentang</a>
+          <a href="#practice" class="text-white/80 hover:text-white transition">Layanan</a>
+          <a href="#other" class="text-white/80 hover:text-white transition">Layanan Lain</a>
+          <a href="#docs" class="text-white/80 hover:text-white transition">Dokumentasi</a>
+          <a href="#team" class="text-white/80 hover:text-white transition">Tim</a>
+          <a href="#contact" class="text-white/80 hover:text-white transition">Kontak</a>
+        </nav>
+        <a href="#contact" class="hidden md:inline-flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-full gold-gradient text-black hover:opacity-90 transition">
+          Konsultasi Gratis <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero with Spline -->
+    <section id="home" class="relative min-h-[92vh] pt-16 overflow-hidden bg-black">
+      <div class="absolute inset-0">
+        <spline-viewer url="https://prod.spline.design/FduaNp3csZktbOi3/scene.splinecode" loading-anim="spinner"></spline-viewer>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/95 pointer-events-none"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+        <div class="max-w-3xl fade-in">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur text-white/80 mb-6">
+            <i data-lucide="shield" class="w-4 h-4 text-gold"></i>
+            <span>Firma Hukum Korporasi & Litigasi</span>
+          </div>
+          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Perlindungan Hukum Kelas Dunia untuk Bisnis Anda
+          </h1>
+          <p class="mt-5 text-base md:text-lg text-white/70 max-w-2xl">
+            Kami membantu perusahaan dan individu menavigasi kompleksitas hukum dengan strategi yang tajam, etika tinggi, dan hasil yang dapat diukur.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 rounded-full gold-gradient text-black font-semibold hover:opacity-90 transition">
+              Hubungi Kami <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+            </a>
+            <a href="#practice" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/15 bg-white/5 text-white hover:bg-white/10 transition">
+              Lihat Layanan
+            </a>
+          </div>
+          <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="rounded-2xl glass p-4"><p class="text-2xl font-bold text-gold">15+</p><p class="text-white/60 text-sm">Tahun Pengalaman</p></div>
+            <div class="rounded-2xl glass p-4"><p class="text-2xl font-bold text-gold">120+</p><p class="text-white/60 text-sm">Klien Korporasi</p></div>
+            <div class="rounded-2xl glass p-4"><p class="text-2xl font-bold text-gold">900+</p><p class="text-white/60 text-sm">Perkara Dimenangkan</p></div>
+            <div class="rounded-2xl glass p-4"><p class="text-2xl font-bold text-gold">10</p><p class="text-white/60 text-sm">Pengacara Senior</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="relative bg-[#0b0b0e] py-20">
+      <div class="absolute left-0 top-1/3 w-64 h-64 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center">
+        <div class="rounded-2xl glass-strong p-6">
+          <h3 class="text-white text-2xl font-semibold">Siapa Kami</h3>
+          <p class="text-white/70 mt-3">Kami adalah firma hukum butik dengan fokus pada korporasi, litigasi, dan kepatuhan. Tim kami menggabungkan pengalaman praktis, penelitian mendalam, dan teknologi untuk menghadirkan layanan yang presisi dan cepat.</p>
+          <div class="mt-6 grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-black/40 border border-white/10"><p class="text-2xl font-bold text-gold">98%</p><p class="text-white/60 text-sm">Kepuasan Klien</p></div>
+            <div class="p-4 rounded-xl bg-black/40 border border-white/10"><p class="text-2xl font-bold text-gold">24 Jam</p><p class="text-white/60 text-sm">Respon Cepat</p></div>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3"><div class="mt-1 w-6 h-6 rounded-md gold-gradient flex items-center justify-center text-black font-bold text-xs">✓</div><p class="text-white/80">Pendekatan strategis berbasis data dan praktik terbaik industri.</p></div>
+          <div class="flex items-start gap-3"><div class="mt-1 w-6 h-6 rounded-md gold-gradient flex items-center justify-center text-black font-bold text-xs">✓</div><p class="text-white/80">Komunikasi transparan, biaya jelas, dan orientasi pada hasil.</p></div>
+          <div class="flex items-start gap-3"><div class="mt-1 w-6 h-6 rounded-md gold-gradient flex items-center justify-center text-black font-bold text-xs">✓</div><p class="text-white/80">Jaringan kolaborator profesional: konsultan pajak, akuntan, dan penilai.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Practice Areas -->
+    <section id="practice" class="relative bg-gradient-to-b from-black to-[#0b0b0e] py-20">
+      <div class="absolute -top-20 right-10 w-72 h-72 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="text-xs tracking-widest uppercase text-gold mb-2">Layanan Utama</p>
+          <h2 class="text-2xl md:text-4xl font-bold text-white">Bidang Praktik</h2>
+          <p class="mt-3 text-white/60">Solusi komprehensif untuk kebutuhan bisnis dan personal Anda</p>
+        </div>
+        <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="group rounded-2xl glass p-6">
+            <div class="w-11 h-11 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center mb-4"><i data-lucide="scale" class="text-gold"></i></div>
+            <h3 class="text-white font-semibold text-lg">Hukum Korporasi</h3>
+            <p class="text-white/60 text-sm mt-2">Pendirian, merger & akuisisi, perjanjian, dan kepatuhan.</p>
+            <div class="mt-4 inline-flex items-center text-sm text-white/80 group-hover:text-white">Pelajari lebih lanjut <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i></div>
+          </div>
+          <div class="group rounded-2xl glass p-6">
+            <div class="w-11 h-11 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center mb-4"><i data-lucide="shield" class="text-gold"></i></div>
+            <h3 class="text-white font-semibold text-lg">Litigasi & Sengketa</h3>
+            <p class="text-white/60 text-sm mt-2">Strategi litigasi efektif dengan pendekatan berbasis bukti.</p>
+            <div class="mt-4 inline-flex items-center text-sm text-white/80 group-hover:text-white">Pelajari lebih lanjut <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i></div>
+          </div>
+          <div class="group rounded-2xl glass p-6">
+            <div class="w-11 h-11 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center mb-4"><i data-lucide="briefcase" class="text-gold"></i></div>
+            <h3 class="text-white font-semibold text-lg">Ketenagakerjaan</h3>
+            <p class="text-white/60 text-sm mt-2">Kebijakan perusahaan, PKB, perselisihan hubungan industrial.</p>
+            <div class="mt-4 inline-flex items-center text-sm text-white/80 group-hover:text-white">Pelajari lebih lanjut <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i></div>
+          </div>
+          <div class="group rounded-2xl glass p-6">
+            <div class="w-11 h-11 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center mb-4"><i data-lucide="landmark" class="text-gold"></i></div>
+            <h3 class="text-white font-semibold text-lg">Kepatuhan & Regulasi</h3>
+            <p class="text-white/60 text-sm mt-2">Audit hukum, perizinan, dan manajemen risiko kepatuhan.</p>
+            <div class="mt-4 inline-flex items-center text-sm text-white/80 group-hover:text-white">Pelajari lebih lanjut <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i></div>
+          </div>
+          <div class="group rounded-2xl glass p-6">
+            <div class="w-11 h-11 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center mb-4"><i data-lucide="building-2" class="text-gold"></i></div>
+            <h3 class="text-white font-semibold text-lg">Properti & Konstruksi</h3>
+            <p class="text-white/60 text-sm mt-2">Perjanjian, pengadaan, dan penyelesaian sengketa proyek.</p>
+            <div class="mt-4 inline-flex items-center text-sm text-white/80 group-hover:text-white">Pelajari lebih lanjut <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i></div>
+          </div>
+          <div class="group rounded-2xl glass p-6">
+            <div class="w-11 h-11 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center mb-4"><i data-lucide="notebook-pen" class="text-gold"></i></div>
+            <h3 class="text-white font-semibold text-lg">HKI & Teknologi</h3>
+            <p class="text-white/60 text-sm mt-2">Perlindungan merek dagang, lisensi, dan kontrak teknologi.</p>
+            <div class="mt-4 inline-flex items-center text-sm text-white/80 group-hover:text-white">Pelajari lebih lanjut <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Services -->
+    <section id="other" class="relative bg-[#0b0b0e] py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="text-xs tracking-widest uppercase text-gold mb-2">Our Other Services</p>
+          <h2 class="text-2xl md:text-4xl font-bold text-white">Layanan & Produk Lain</h2>
+          <p class="mt-3 text-white/60">Nilai tambah di luar jasa hukum untuk mendukung pertumbuhan bisnis Anda</p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl glass p-6 relative overflow-hidden">
+            <div class="absolute -right-6 -top-6 w-28 h-28 rounded-full bg-gold/10 blur-2xl pointer-events-none"></div>
+            <h3 class="text-white text-xl font-semibold">Aplikasi Akuntansi Bisnis</h3>
+            <p class="text-white/70 text-sm mt-3">Paket aplikasi akuntansi modern untuk UMKM hingga enterprise: pembukuan, invoicing, inventory, dan laporan keuangan real-time.</p>
+            <div class="mt-4 flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-black/40 text-white/70">SaaS</span><span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-black/40 text-white/70">Integrasi POS</span><span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-black/40 text-white/70">Multi-cabang</span></div>
+            <button class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full gold-gradient text-black text-sm font-semibold hover:opacity-90">Minta Demo <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+          </div>
+          <div class="rounded-2xl glass p-6 relative overflow-hidden">
+            <div class="absolute -right-6 -top-6 w-28 h-28 rounded-full bg-gold/10 blur-2xl pointer-events-none"></div>
+            <h3 class="text-white text-xl font-semibold">Konsultasi Pajak</h3>
+            <p class="text-white/70 text-sm mt-3">Perencanaan pajak, kepatuhan SPT, restitusi, serta pendampingan pemeriksaan pajak dengan pendekatan berbasis risiko.</p>
+            <div class="mt-4 flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-black/40 text-white/70">Tax Compliance</span><span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-black/40 text-white/70">Advisory</span><span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-black/40 text-white/70">Audit Support</span></div>
+            <button class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full gold-gradient text-black text-sm font-semibold hover:opacity-90">Minta Demo <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+          </div>
+          <div class="rounded-2xl glass p-6 relative overflow-hidden">
+            <div class="absolute -right-6 -top-6 w-28 h-28 rounded-full bg-gold/10 blur-2xl pointer-events-none"></div>
+            <h3 class="text-white text-xl font-semibold">Konsultasi Tata Kelola & GRC</h3>
+            <p class="text-white/70 text-sm mt-3">Penerapan tata kelola, manajemen risiko, dan kepatuhan (GRC) yang terukur untuk perusahaan Anda.</p>
+            <div class="mt-4 flex flex-wrap gap-2"><span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-black/40 text-white/70">Governance</span><span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-black/40 text-white/70">Risk</span><span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-black/40 text-white/70">Compliance</span></div>
+            <button class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full gold-gradient text-black text-sm font-semibold hover:opacity-90">Minta Demo <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentation / Gallery -->
+    <section id="docs" class="bg-[#0b0b0e] py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="text-xs tracking-widest uppercase text-gold mb-2">Dokumentasi</p>
+          <h2 class="text-2xl md:text-4xl font-bold text-white">Galeri Kegiatan & Publikasi</h2>
+          <p class="mt-3 text-white/60">Tambahkan foto atau gambar dokumentasi Anda secara langsung di sini.</p>
+        </div>
+
+        <!-- Upload control -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3 text-white/70">
+            <i data-lucide="images" class="text-gold"></i>
+            <span>Unggah gambar (JPG/PNG) untuk ditampilkan di galeri.</span>
+          </div>
+          <div>
+            <label class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:bg-white/10 cursor-pointer">
+              <i data-lucide="upload"></i>
+              <span>Pilih Gambar</span>
+              <input id="gallery-input" type="file" accept="image/*" multiple class="hidden" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Gallery grid -->
+        <div id="gallery-grid" class="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <!-- Sample placeholders -->
+          <div class="relative group overflow-hidden rounded-xl glass aspect-[4/3]"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] duration-300" alt="Dokumentasi 1" /></div>
+          <div class="relative group overflow-hidden rounded-xl glass aspect-[4/3]"><img src="https://images.unsplash.com/photo-1523958203904-cdcb402031fd?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] duration-300" alt="Dokumentasi 2" /></div>
+          <div class="relative group overflow-hidden rounded-xl glass aspect-[4/3]"><img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] duration-300" alt="Dokumentasi 3" /></div>
+          <div class="relative group overflow-hidden rounded-xl glass aspect-[4/3]"><img src="https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-[1.03] duration-300" alt="Dokumentasi 4" /></div>
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="fixed inset-0 bg-black/90 hidden items-center justify-center p-6 z-[60]">
+          <button id="lightbox-close" class="absolute top-6 right-6 inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/10 hover:bg-white/20 border border-white/15"><i data-lucide="x"></i>Tutup</button>
+          <img id="lightbox-img" src="" class="max-w-5xl max-h-[85vh] rounded-xl border border-white/10" alt="Preview" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="bg-[#0b0b0e] py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <p class="text-xs tracking-widest uppercase text-gold mb-2">Our Team</p>
+          <h2 class="text-2xl md:text-4xl font-bold text-white">Pengacara Kami</h2>
+          <p class="mt-3 text-white/60">Tim berpengalaman yang berdedikasi pada kepentingan Anda</p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl glass p-6 text-center">
+            <div class="w-16 h-16 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="gavel" class="text-gold w-7 h-7"></i></div>
+            <h4 class="text-white font-semibold">A. Pratama, S.H., M.H.</h4>
+            <p class="text-gold text-sm">Managing Partner</p>
+            <p class="text-white/60 text-sm mt-2">Fokus: Korporasi & M&A</p>
+          </div>
+          <div class="rounded-2xl glass p-6 text-center">
+            <div class="w-16 h-16 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="gavel" class="text-gold w-7 h-7"></i></div>
+            <h4 class="text-white font-semibold">D. Wibowo, S.H.</h4>
+            <p class="text-gold text-sm">Partner</p>
+            <p class="text-white/60 text-sm mt-2">Fokus: Litigasi & Arbitrase</p>
+          </div>
+          <div class="rounded-2xl glass p-6 text-center">
+            <div class="w-16 h-16 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center mb-4 mx-auto"><i data-lucide="gavel" class="text-gold w-7 h-7"></i></div>
+            <h4 class="text-white font-semibold">N. Kirana, S.H., M.Kn.</h4>
+            <p class="text-gold text-sm">Senior Associate</p>
+            <p class="text-white/60 text-sm mt-2">Fokus: Kepatuhan & Perizinan</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact (WhatsApp only) -->
+    <section id="contact" class="relative bg-gradient-to-b from-[#0b0b0e] to-black py-20">
+      <div class="absolute right-10 top-10 w-72 h-72 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
+        <div class="rounded-2xl glass-strong p-6">
+          <h3 class="text-white text-2xl font-semibold">Mulai Konsultasi</h3>
+          <p class="text-white/70 mt-2">Form ini akan mengirimkan pesan terformat ke WhatsApp kami.</p>
+          <form id="wa-form" class="mt-6 grid grid-cols-1 gap-4" onsubmit="return false;">
+            <input id="f-name" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-gold/60" placeholder="Nama" />
+            <input id="f-email" type="email" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-gold/60" placeholder="Email" />
+            <input id="f-company" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-gold/60" placeholder="Perusahaan (opsional)" />
+            <select id="f-service" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white focus:outline-none focus:border-gold/60">
+              <option value="Korporasi">Korporasi</option>
+              <option value="Litigasi">Litigasi</option>
+              <option value="Kepatuhan">Kepatuhan</option>
+              <option value="Ketenagakerjaan">Ketenagakerjaan</option>
+              <option value="Pajak">Konsultasi Pajak</option>
+              <option value="Akuntansi">Aplikasi Akuntansi</option>
+            </select>
+            <textarea id="f-message" rows="4" class="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:border-gold/60" placeholder="Ceritakan kebutuhan Anda"></textarea>
+            <button id="wa-send" type="button" class="mt-2 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl gold-gradient text-black font-semibold hover:opacity-90">
+              Kirim via WhatsApp <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </form>
+        </div>
+        <div class="space-y-4">
+          <div class="rounded-2xl glass p-6">
+            <h4 class="text-white font-semibold mb-4">Kontak</h4>
+            <div class="space-y-3 text-white/80">
+              <p class="flex items-center gap-3"><i data-lucide="phone" class="text-gold w-4 h-4"></i><span>+62 821 0000 1234</span></p>
+              <p class="flex items-center gap-3"><i data-lucide="mail" class="text-gold w-4 h-4"></i><span>contact@lexpartners.co</span></p>
+              <p class="flex items-center gap-3"><i data-lucide="map-pin" class="text-gold w-4 h-4"></i><span>SCBD, Jakarta</span></p>
+            </div>
+          </div>
+          <div class="rounded-2xl glass p-6">
+            <h4 class="text-white font-semibold">Butuh Solusi Hukum Terpadu?</h4>
+            <p class="text-white/70 mt-2">Kami siap menjadi mitra strategis Anda dari hulu ke hilir.</p>
+            <a href="#practice" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-full gold-gradient text-black text-sm font-semibold hover:opacity-90">Jelajahi Layanan <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center"><i data-lucide="gavel" class="text-gold"></i></div>
+          <div>
+            <p class="text-white font-semibold">Lex & Partners</p>
+            <p class="text-white/40 text-xs">© <span id="year"></span> Semua hak dilindungi.</p>
+          </div>
+        </div>
+        <div class="text-white/60 text-sm">Privasi • Syarat • Karier</div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      // Init icons
+      lucide.createIcons();
+
+      // Current year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Smooth highlight on scroll (active nav) - basic
+      const sections = ['home','about','practice','other','docs','team','contact'];
+      const navLinks = {};
+      document.querySelectorAll('header nav a').forEach(a=>{ navLinks[a.getAttribute('href').slice(1)] = a; });
+      const onScroll = () => {
+        let current = 'home';
+        sections.forEach(id => {
+          const el = document.getElementById(id);
+          if (el && window.scrollY + 120 >= el.offsetTop) current = id;
+        });
+        Object.values(navLinks).forEach(a=>a.classList.remove('text-white'));
+        if (navLinks[current]) navLinks[current].classList.add('text-white');
+      };
+      window.addEventListener('scroll', onScroll);
+
+      // Gallery: load selected images to grid
+      $('#gallery-input').on('change', function(e) {
+        const files = e.target.files;
+        for (const file of files) {
+          if (!file.type.startsWith('image/')) continue;
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            const url = ev.target.result;
+            const itm = $(`<div class='relative group overflow-hidden rounded-xl glass aspect-[4/3] cursor-zoom-in'><img src='${url}' class='w-full h-full object-cover group-hover:scale-[1.03] duration-300' alt='Dokumentasi baru' /></div>`);
+            $('#gallery-grid').prepend(itm);
+          };
+          reader.readAsDataURL(file);
+        }
+        // reset input to allow re-upload same files
+        $(this).val('');
+      });
+
+      // Lightbox
+      $(document).on('click', '#gallery-grid img', function(){
+        const src = $(this).attr('src');
+        $('#lightbox-img').attr('src', src);
+        $('#lightbox').removeClass('hidden').addClass('flex');
+        setTimeout(()=> lucide.createIcons(), 0);
+      });
+      $('#lightbox, #lightbox-close').on('click', function(e){
+        if (e.target.id === 'lightbox' || e.target.id === 'lightbox-close' || e.currentTarget.id === 'lightbox-close') {
+          $('#lightbox').addClass('hidden').removeClass('flex');
+        }
+      });
+
+      // WhatsApp formatted message
+      const WA_NUMBER = '6282100001234'; // ganti dengan nomor WA resmi Anda (tanpa +)
+      $('#wa-send').on('click', function(){
+        const name = $('#f-name').val().trim();
+        const email = $('#f-email').val().trim();
+        const company = $('#f-company').val().trim();
+        const service = $('#f-service').val();
+        const msg = $('#f-message').val().trim();
+
+        const lines = [
+          '*Konsultasi Hukum — Lex & Partners*',
+          `Nama: ${name || '-'} `,
+          `Email: ${email || '-'} `,
+          `Perusahaan: ${company || '-'} `,
+          `Layanan: ${service}`,
+          '—',
+          msg || '(Tulis kebutuhan Anda di sini)'
+        ];
+        const text = encodeURIComponent(lines.join('\n'));
+        const url = `https://wa.me/${WA_NUMBER}?text=${text}`;
+        window.open(url, '_blank');
+      });
+    </script>
   </body>
 </html>
